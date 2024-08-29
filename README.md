@@ -13,9 +13,11 @@ $ git config user.email "ambXXXXXXX@gmail.com"
 ambro@DESKTOP-RJ17PMT MINGW64 /c/users/ambro/Desktop/Git/GitProj (master)
 $ git remote add origin "https://github.com/ARKdev17/Proj_1"
 
-De esta secuencia todo codigo que uno vaya escribiendo y guardando en PC local se puede vincular con el repositorio
+Esto se enlaza con el proyecto 1. El del que se indica como origin por convencion
+Si se carga un archivo nuevo no pude hacer que se cargue en el repositorio. Averiguar como hacerlo
 
 Fin clase 3
 ---------------------
-
-
+Day-3:
+Funcion $ git status
+Da el estado en que esta ahora la carpeta. Indica si hay archivos sin enlazar
