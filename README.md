@@ -13,6 +13,8 @@ $ git config user.email "ambXXXXXXX@gmail.com"
 ambro@DESKTOP-RJ17PMT MINGW64 /c/users/ambro/Desktop/Git/GitProj (master)
 $ git remote add origin "https://github.com/ARKdev17/Proj_1"
 
+De esta secuencia todo codigo que uno vaya escribiendo y guardando en PC local se puede vincular con el repositorio
+
 Fin clase 3
 ---------------------
 
