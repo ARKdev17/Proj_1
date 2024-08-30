@@ -127,6 +127,174 @@ Fast-forward
 De esta forma se logro importar un archivo desde un repositorio digital. No hace falta agregar nada. Solo actualiza lo que esta en ese branch.
 
   Fin dia 3
-----------------------------------
-Day-4:
+---------------------------------------------------------------------------------------------------------------------
+Day-4: BRANCHES
+Las ramas permiten guardar varias versiones diferentes de un mismo proyecto
+Permite hacer un seguimiento de un proyecto en la medida que avanza. Es decir si venis con un codigo  que viene andando bien y luego tenes que agregar una funcionalidad o hacer un rework para mejorarlo se puede abrir una BRANCH nueva que nos permite guardar o tener el proyecto que teniamos y probar cosas nuevas en la rama nueva. 
+Si funciona se deja, si no funciona, se vuelve al anterior. Es una especie de backup y de control de cambios. Pero tambien permite diversificar un trabajo para hacerlo en partes por diferentes personas o lugares. <<Es una linea independiente de desarrollo>>
+Tambien se pueden tener ramas para probar diferentes funciones (una de desarrollo, otra de test, etc)
+[Objetivo de aprendizaje en Git: Como crear una rama y como intercambiar entre ramas]
+
+Comando: $ git branch - Nos dice en que rama estamos trabajando
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (main)
+$ git branch
+* main
+En este caso es la MAIN (tambien aparece en el directorio?)
+
+Como crear una rama nueva. Ej. RAMA_1
+Comando: $ git branch (interte nombre)
+Ej:
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (main)
+$ git branch RAMA_1
+Al apretar ENTER se crea la rama- Pero como sabemos que ramas hay o en cual estamos? Volver a usar el comando $ git branch
+Ej.
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (main)
+$ git branch
+  RAMA_1
+* main                            (main aparece en verde, lo que nos indica que estamos ahi)
+
+Hasta aca nos dice que tenemos dos ramas y que estamos parados en la main
+----
+¿Como renombrar una rama?
+Comando: $ gut branch -m (nombre de la rama original) (nombre de la rama nuevo)   (los nombres van sin parentesis)
+Ej.
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (main)
+$ git branch RAMA2
+
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (main)
+$ git branch
+  RAMA2
+  RAMA_1
+* main
+
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (main)
+$ git branch -m RAMA2 RAMA_2
+
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (main)
+$ git branch
+  RAMA_1
+  RAMA_2
+* main
+
+Nueva rama renombrada de RAMA2 a RAMA_2
+----
+¿Como hacemos para cambiar de rama?
+Comando: $ git checkout (nombre de la rama a la que quiero ir)
+Ej.
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (main)
+$ git checkout rama_2
+Switched to branch 'rama_2'
+
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (rama_2)  --> Notar q aparece en la posicion que estamos en rama_2
+$ git branch
+  RAMA_1
+  RAMA_2
+  main
+
+OJO!!!! Por error puse en minusculas rama_2. Eso creó como una nueva rama pero no aparece listada cuando tiras $ git branch. No se para que sirve, pero hay que tenerlo en cuenta. Si distinguen MAYUS de MINUS
+
+Ej. (ahora bien hecho)
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (rama_2)  --> Notar que estamos en rama_2 (MINUS)
+$ git checkout RAMA_2
+Switched to branch 'RAMA_2'     --> Cambiamos a RAMA_2, la que ya habiamos creado inicialmente
+
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (RAMA_2)
+$ git branch
+  RAMA_1
+* RAMA_2                --> Ahora si aparece RAMA_2 en verde y arriba en direccion nos figura (RAMA_2)
+  main
+---
+¿Como eliminar una rama?
+Comando: git branch -d (nombre de la rama)             --> Sin parentesis
+Ej.
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (RAMA_2)
+$ git branch -d RAMA_2
+error: cannot delete branch 'RAMA_2' used by worktree at 'C:/Users/ambro/Desktop
+/Git/Clone/Proj_1'                  --> Aca nos indica que no podemos borrar una rama si estamos parados en esa rama
+
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (RAMA_2)
+$ git checkout RAMA_1               --> Cambiamos a otra rama (puede ser main tambien)
+Switched to branch 'RAMA_1'
+
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (RAMA_1)
+$ git branch -d RAMA_2                   --> Probamos borrar la RAMA_2
+Deleted branch RAMA_2 (was caf38b7).     __> RAMA_2 confirmado que fue borrada
+
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (RAMA_1)
+$ git branch                             --Corroboramos que no este mas la rama
+* RAMA_1
+  main
+
+Efectivamente acabamos de borrar la rama RAMA_2
+----
+== ¿Como crear archivos en una nueva rama? NO van estar en la master/main ==
+Comando: $ touch "(ingresar nombre y .tipo Ej. texto.txt)"
+Ej.
+
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (RAMA_1)
+$ touch "texto.txt"
+
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (RAMA_1)
+$ touch "texto1.txt"
+
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (RAMA_1)
+$ touch "texto2.txt"
+--> Hasta aca acabo de crear 3 archivos .txt en la carpeta Proj_1
+
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (RAMA_1)
+$ git checkout master
+branch 'master' set up to track 'origin/master'.
+Switched to a new branch 'master'
+--> Cuando cambiamos a master vemos que los archivos siguen ahi. Eso es porque nunca indicamos que los .txt creados esten asignados en RAMA_1 solamente
+--> Para hacerlo hay que agregar y luego commitear (commit) para que los cambios hechos sean exclusivos de la RAMA_1
+
+Comando: $ git add .    --> agrega todos los archivos que estamos trabajando en esta rama
+         $ git commit -m "insertar un mensaje referido al cambio"
+Ej.
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (RAMA_1)
+$ git add .    --> Agrego los archivos (todos)
+
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (RAMA_1)
+$ git commit -m "commit de los archivos .txt"    --> al intentar commitear (asignar a un repositorio) fallo autenticacion
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'ambro@DESKTOP-RJ17PMT.(none)')
+
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (RAMA_1)
+$ ^C
+
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (RAMA_1)
+$ git config --global user.email "ambrosiork@gmail.com"
+
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (RAMA_1)
+$ git config --global user.name "ARKdev_17"            --> Autenticacion completa
+
+ambro@DESKTOP-RJ17PMT MINGW64 ~/Desktop/Git/Clone/Proj_1 (RAMA_1)
+$ git commit -m "commit de los archivos .txt"             --> Se agregaron los archivos al repositorio 
+[RAMA_1 c7d8590] commit de los archivos .txt
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 texto.txt
+ create mode 100644 texto1.txt
+ create mode 100644 texto2.txt
+
+Ahora al cambiar de rama en la carpeta del proyecto (ejemplo de RAMA_1 a main) deberian desaparecer los archivos.
+
+WOW! Efectivamente funciona casi como magia.
+
+Ahora solo falta ver como agregar lo que se trabaja en las ramas en el master/main
+
+Fin dia 4
+------------------------------------------------------------------------------------------------------------------------
+Day 5:
+
 
