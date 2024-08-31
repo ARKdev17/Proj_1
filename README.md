@@ -312,5 +312,6 @@ Unifica dos ramas
  --> OJO! respetar la sintaxis, la podes cagar. Primero se pone la rama que trabajaste (Ej. RAMA_1). Terminaste y la queres agregar a la principal. Bueno Pones la ramaDestion (Ej. main o master)
  
 
+El archvio README crasheo todo. Hacer un back up en un archivo txt del contenido. Luego subirlo a Proj_1. Y finalmente hacer todos los pasos de cada clase y terminar con el curso introductorio de Git
 
 
