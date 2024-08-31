@@ -295,6 +295,22 @@ Ahora solo falta ver como agregar lo que se trabaja en las ramas en el master/ma
 
 Fin dia 4
 ------------------------------------------------------------------------------------------------------------------------
-Day 5:
+Day 5: DIFF y MERGE
+Son comandos que nos permiten ver diferencias que hay entre las distintas ramas
+DIFF: permite ver diferencias entre ramas
+MERGE: Une el contenido de ramas para que todos queden contenidos en una rama unificada
+
+¿Como ver que diferencias hay entre dos ramas?
+Comando: $ git diff (nombre rama 1) (nombre rama 2)
+Ej.
+Se puede comprarar entre ramas. En rejo aparece lo que no tiene la rama (deleted) y en verde (lo que se agrego nuevo)
+Tambien indica si hay o no archivos nuevos/deleted segun donde se compare
+
+Como unir todo a la rama master?
+Comando MERGE: $ git merge ramaOrigen ramaDestino  
+Unifica dos ramas
+ --> OJO! respetar la sintaxis, la podes cagar. Primero se pone la rama que trabajaste (Ej. RAMA_1). Terminaste y la queres agregar a la principal. Bueno Pones la ramaDestion (Ej. main o master)
+ 
+
 
 
